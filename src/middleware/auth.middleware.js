@@ -2,7 +2,6 @@ import jwt from 'jsonwebtoken';
 import env from '../config/env.js';
 import { User } from '../models/User.model.js';
 
-// 1. Token validation
 export const verifyToken = (req, res, next) => {
   const token = req.cookies?.token;
 
@@ -19,7 +18,6 @@ export const verifyToken = (req, res, next) => {
   });
 };
 
-// 2. Admin role verification
 export const verifyAdmin = async (req, res, next) => {
   try {
     const email = req.user?.email;
@@ -34,7 +32,6 @@ export const verifyAdmin = async (req, res, next) => {
   }
 };
 
-// 3. Librarian role verification
 export const verifyLibrarian = async (req, res, next) => {
   try {
     const email = req.user?.email;
