@@ -4,7 +4,8 @@ import cookieParser from 'cookie-parser';
 import env from '../config/env.js';
 import authRoutes from '../routes/auth.routes.js';
 import bookRoutes from '../routes/book.routes.js';
-import deliveryRoutes from '../routes/delivery.routes.js'; 
+import deliveryRoutes from '../routes/delivery.routes.js';
+import reviewRoutes from '../routes/review.routes.js';
 
 const app = express();
 
@@ -21,7 +22,9 @@ app.get('/', (req, res) => {
 
 app.use('/api/auth', authRoutes);
 app.use('/api/books', bookRoutes);
-app.use('/api/deliveries', deliveryRoutes); 
+app.use('/api/deliveries', deliveryRoutes);
+app.use('/api/reviews', reviewRoutes);
+
 app.use((req, res) => {
   res.status(404).json({ message: 'Requested Route Not Found' });
 });
