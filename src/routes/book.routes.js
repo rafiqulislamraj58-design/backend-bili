@@ -18,10 +18,8 @@ import { verifyToken, verifyLibrarian, verifyAdmin } from '../middleware/auth.mi
 
 const router = express.Router();
 
-
 router.get('/', getPublishedBooks);
 router.get('/featured', getFeaturedBooks);
-router.get('/:id', getBookById);
 
 router.post('/', verifyToken, verifyLibrarian, addBook);
 router.get('/librarian/my-inventory', verifyToken, verifyLibrarian, getLibrarianBooks);
@@ -35,5 +33,8 @@ router.patch('/admin/:id/approve', verifyToken, verifyAdmin, approveBook);
 router.get('/admin/all', verifyToken, verifyAdmin, getAllBooksAdmin);
 router.patch('/admin/:id/status', verifyToken, verifyAdmin, adminUpdateBookStatus);
 router.delete('/admin/:id', verifyToken, verifyAdmin, adminDeleteBook);
+
+
+router.get('/:id', getBookById);
 
 export default router;

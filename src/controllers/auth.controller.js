@@ -8,10 +8,10 @@ const cookieOptions = {
   sameSite: env.nodeEnv === 'production' ? 'none' : 'strict',
 };
 
-// 1. Generate token on login and set cookie
+
 export const createToken = async (req, res) => {
   try {
-    const user = req.body; // { email: "..." }
+    const user = req.body;
     if (!user?.email) {
       return res.status(400).json({ message: 'Email is required' });
     }
@@ -26,7 +26,6 @@ export const createToken = async (req, res) => {
   }
 };
 
-// 2. Logout (clear cookie)
 export const clearToken = async (req, res) => {
   try {
     res
@@ -38,7 +37,6 @@ export const clearToken = async (req, res) => {
   }
 };
 
-// 3. Save user to database
 export const saveUser = async (req, res) => {
   try {
     const { name, email, photoURL, role } = req.body;
@@ -61,7 +59,6 @@ export const saveUser = async (req, res) => {
   }
 };
 
-// 4. Get logged-in user profile
 export const getMe = async (req, res) => {
   try {
     const email = req.user?.email;
