@@ -7,7 +7,8 @@ import bookRoutes from '../routes/book.routes.js';
 import deliveryRoutes from '../routes/delivery.routes.js';
 import reviewRoutes from '../routes/review.routes.js';
 import statsRoutes from '../routes/stats.routes.js';
-import userRoutes from '../routes/user.routes.js'; 
+import userRoutes from '../routes/user.routes.js';
+import wishlistRoutes from '../routes/wishlist.routes.js'; 
 
 const app = express();
 
@@ -29,12 +30,11 @@ app.use('/api/books', bookRoutes);
 app.use('/api/deliveries', deliveryRoutes);
 app.use('/api/reviews', reviewRoutes);
 app.use('/api/stats', statsRoutes);
-app.use('/api/users', userRoutes); 
-
+app.use('/api/users', userRoutes);
+app.use('/api/wishlist', wishlistRoutes); 
 app.use((req, res) => {
   res.status(404).json({ message: 'Requested Route Not Found' });
 });
-
 
 app.use((err, req, res, next) => {
   console.error(err.stack);
